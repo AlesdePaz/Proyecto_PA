@@ -14,8 +14,14 @@ var botonCero = document.getElementById('botonCero')
 
 var botonSuma = document.getElementById('botonSuma')
 // otra forma: 'document.getElementById('botonSuma').addEventListener('click', clickSuma)'
+var botonResta = document.getElementById('botonResta')
+var botonDivision = document.getElementById('botonDivision')
+var botonMult = document.getElementById('botonMult')
 var actual = document.getElementById('numeroActual')
 var resultado = document.getElementById('resultado')
+
+var Retroceder = document.getElementById('botonRetroceder')
+var Borrar = document.getElementById('botonBorrar')
 
 botonUno.addEventListener('click', clickUno)
 botonDos.addEventListener('click', clickDos)
@@ -27,7 +33,13 @@ botonSiete.addEventListener('click', clickSiete)
 botonOcho.addEventListener('click', clickOcho)
 botonNueve.addEventListener('click', clickNueve)
 botonCero.addEventListener('click', clickCero)
+
 botonSuma.addEventListener('click', clickSuma)
+botonResta.addEventListener('click', clickResta)
+botonDivision.addEventListener('click', clickDivision)
+botonMult.addEventListener('click', clickMult)
+Retroceder.addEventListener('click', clickRetro)
+Borrar.addEventListener('click', clickBorrar)
 
 Mousetrap.bind('1', clickUno) /*funciona para usar el teclado numerico en lugar 
 de dar click sobre los botones numericos de nuesta calculadora*/
@@ -67,5 +79,45 @@ function clickSuma(){
     let valorActual = parseInt(actual.innerHTML)
     let valorResultado = parseInt(resultado.innerHTML)
     resultado.innerHTML = valorActual + valorResultado
+    actual.innerHTML = '0'
+}
+function clickResta(){
+    let valorActual = parseInt(actual.innerHTML)
+    let valorResultado = parseInt(resultado.innerHTML)
+    if(valorResultado != 0){
+    resultado.innerHTML = valorResultado - valorActual
+    actual.innerHTML = '0'
+    }else{
+        resultado.innerHTML = valorResultado + valorActual
+        actual.innerHTML = '0'
+    }
+}
+function clickDivision(){
+    let valorActual = parseInt(actual.innerHTML)
+    let valorResultado = parseInt(resultado.innerHTML)
+    if(valorResultado != 0){
+        resultado.innerHTML = valorResultado / valorActual
+        actual.innerHTML = '0'
+        }else{
+            resultado.innerHTML = valorResultado + valorActual
+            actual.innerHTML = '0'
+        }
+}
+function clickMult(){
+    let valorActual = parseInt(actual.innerHTML)
+    let valorResultado = parseInt(resultado.innerHTML)
+    if(valorResultado != 0){
+        resultado.innerHTML = valorResultado * valorActual
+        actual.innerHTML = '0'
+        }else{
+            resultado.innerHTML = valorResultado + valorActual
+            actual.innerHTML = '0'
+        }
+}
+function clickRetro(){
+    actual.innerHTML = '0'
+}
+function clickBorrar(){
+    resultado.innerHTML = '0'
     actual.innerHTML = '0'
 }
